@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
 // ])
 
 .controller('QuestionsCtrl', function($scope, $http) {
-  $http.get('http://localhost:8888/fdi/v2/node/0e87af47-0a28-434b-bfa9-57d150d2bc4c')
+  $http.get('http://fdi.mediafrontier.ch.php56-30.ord1-1.websitetestlink.com/v2/node/ff548a09-089f-4289-8419-f76492f69e0a')
     .success(function(data, status, headers, config){
       console.log('data success');
       console.log(data); // for browser console
