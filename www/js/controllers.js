@@ -52,23 +52,22 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('CompaniesController', ['$scope', '$http',
-  function($scope, $http) {
-    $http.get('companies.json').success(function(data) {
-      $scope.companies = [];
-      $scope.technologies = [];
-      angular.forEach(data, function(company) {
-        $scope.companies.push(company.title);
-        angular.forEach(company.technologies, function(tech) {
-          if ($scope.technologies.indexOf(tech) == -1) {
-            $scope.technologies.push(tech);
-          }
-        });
-      });
-    });
-
-  }
-])
+// .controller('CompaniesController', ['$scope', '$http',
+  // function($scope, $http) {
+    // $http.get('companies.json').success(function(data) {
+    //   $scope.companies = [];
+    //   $scope.technologies = [];
+  //     angular.forEach(data, function(company) {
+//         $scope.companies.push(company.title);
+  //       angular.forEach(company.technologies, function(tech) {
+//           if ($scope.technologies.indexOf(tech) == -1) {
+  //           $scope.technologies.push(tech);
+//           }
+//         });
+  //     });
+//     });
+//   }
+// ])
 
 .controller('QuestionsCtrl', function($scope, $http) {
   $http.get('http://localhost:8888/fdi/v2/node/0e87af47-0a28-434b-bfa9-57d150d2bc4c')
@@ -76,7 +75,6 @@ angular.module('starter.controllers', [])
       console.log('data success');
       console.log(data); // for browser console
       $scope.result = data.webform.components; // for UI
-      $scope.components = data.webform.components;
     })
     .error(function(data, status, headers,config){
       console.log('data error');

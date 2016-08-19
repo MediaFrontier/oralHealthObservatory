@@ -24,8 +24,18 @@
         <ion-checkbox>{{result[4].extra.items.split('\r\n')[2].split('|')[1]}}</ion-checkbox>
         <ion-checkbox>{{result[4].extra.items.split('\r\n')[3].split('|')[1]}}</ion-checkbox>
         <ion-checkbox>{{result[4].extra.items.split('\r\n')[4].split('|')[1]}}</ion-checkbox>
-        <ion-checkbox>{{items}}</ion-checkbox>
               </ion-list-item>
     </ion-list>
+
+
+            <ion-list><ion-list-item ng-repeat="(key, val) in result">
+              <h1>Question {{val.cid}}</h1>
+              <h3 ng-bind-html="val.name">{{val.name}}</h3>
+              <h4>{{val.type}}</h4>
+              <ion-checkbox ng-repeat="items in val.extra.items.split('\r\n')">{{val.extra.items.split('\r\n')[$index].split('|')[1]}}</ion-checkbox>
+            </ion-list-item>
+          </ion-list>
+
+
   </ion-content>
 </ion-view>
