@@ -52,31 +52,24 @@ angular.module('starter.controllers', [])
   ];
 })
 
-// .controller('CompaniesController', ['$scope', '$http',
-  // function($scope, $http) {
-    // $http.get('companies.json').success(function(data) {
-    //   $scope.companies = [];
-    //   $scope.technologies = [];
-  //     angular.forEach(data, function(company) {
-//         $scope.companies.push(company.title);
-  //       angular.forEach(company.technologies, function(tech) {
-//           if ($scope.technologies.indexOf(tech) == -1) {
-  //           $scope.technologies.push(tech);
-//           }
-//         });
-  //     });
-//     });
-//   }
-// ])
 
+//import questions from JSON service
 .controller('QuestionsCtrl', function($scope, $http) {
+   // this line won't work. See comment
+
   $http.get('http://fdi.mediafrontier.ch.php56-30.ord1-1.websitetestlink.com/v2/node/ff548a09-089f-4289-8419-f76492f69e0a')
     .success(function(data, status, headers, config){
       console.log('data success');
-      console.log(data); // for browser console
-      $scope.result = data.webform.components; // for UI
+      console.log(data); // for browser console, outputs all data from JSON
+      $scope.result = data.webform.components; // for UI, outputs only the COMPONENTS object from JSON
+      // for each question, split the "items" string into separate values
+      angular.forEach(data.webform.components, function(value){
+            if(value.type == "select")
+             console.log(value.extra.items.split('\r\n'));
+       })
     })
-    .error(function(data, status, headers,config){
+
+    .error(function(data, status, headers, config){
       console.log('data error');
     })
     .then(function(result){
