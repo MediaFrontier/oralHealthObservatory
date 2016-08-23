@@ -63,9 +63,10 @@ angular.module('starter.controllers', [])
       console.log(data); // for browser console, outputs all data from JSON
       $scope.result = data.webform.components; // for UI, outputs only the COMPONENTS object from JSON
       // for each question, split the "items" string into separate values
-      angular.forEach(data.webform.components, function(value){
+      angular.forEach($scope.result, function(value){
             if(value.type == "select")
-             console.log(value.extra.items.split('\r\n'));
+            $scope.allanswers = value.extra.items.split('\r\n'),
+            console.log($scope.allanswers);
        })
     })
 
