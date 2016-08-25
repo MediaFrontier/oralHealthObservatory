@@ -62,14 +62,131 @@ angular.module('starter.controllers', [])
       console.log('data success');
       console.log(data); // for browser console, outputs all data from JSON
       $scope.result = data.webform.components; // for UI, outputs only the COMPONENTS object from JSON
+      $scope.allanswers = [];
+      $scope.answerandkey = [];
+      $scope.jsoncounter = [];
+      $scope.appquestionnaire = [];
+      console.log($scope.allanswers);
+      console.log($scope.answerandkey);
+      console.log($scope.jsoncounter);
+      console.log($scope.appquestionnaire);
       // for each question, split the "items" string into separate values
-      angular.forEach($scope.result, function(value){
-            if(value.type == "select")
-            $scope.allanswers = value.extra.items.split('\r\n'),
-            console.log($scope.allanswers);
-       })
-    })
 
+    angular.forEach($scope.result, function(value){
+        if(value.type == "select") {
+        $scope.allanswers.push (value.extra.items.split('\r\n'));
+        }
+        else { $scope.allanswers.push ("N");
+        }
+
+
+   });
+
+
+
+
+   for (var itemIndex = 0; itemIndex < $scope.allanswers.length; itemIndex++) {
+         var itemSetValues = $scope.allanswers[itemIndex];
+
+         for (var setItemIndex = 0; setItemIndex < itemSetValues.length; setItemIndex++){
+           if ($scope.allanswers[itemIndex][setItemIndex].length > 1) {
+           $scope.answerandkey.push (itemIndex,itemSetValues[setItemIndex].split('|') );
+         }
+            else {
+              $scope.answerandkey.push (itemIndex, "N")
+            }
+
+           //Creates array of answers with question number, question order/rank and answer with key and value in an array
+         }
+   };
+
+
+   var cid = 'cid'; //Component id, unique identifier for each questionnaire component
+   var weight = 'weight'; //The order in which each component should appear in
+   var form_key = 'form_key'; //machine-readable name for question
+   var type = 'type'; //Type of question ie. select, number
+   var values = 'values'; //blank array, where the user input will write to
+   var name = 'name'; //Question text
+   var pid = 'pid'; //Identifier for components that are part of a fieldset
+   var nid = 'nid'; //Conditional identifier from drupal
+   var min = 'min'; //If the question type is a number, minimum value allowed for user input
+   var max = 'max'; //If the question type is a number, maximum value allowed for user input
+   var multiple = 'multiple'; //Whether or not multiple selections are allowed
+
+   var answerIndex = 0;
+
+   angular.forEach($scope.result, function(value){
+
+      /** loop through array by CID , needs splice process
+
+      var array = [0,["male", "Male"],0,["female","Female"],1,["y","Y"],1,["n","N"]];
+
+      var outputs = [];
+
+      var loopcid = 1;
+
+      for (itemIndex = 0; itemIndex < array.length; itemIndex++) {
+
+      if (array[itemIndex] == loopcid){
+      outputs.push(array[itemIndex+1][1]);
+      }
+
+      **/
+
+       $scope.appquestionnaire.push ({
+         name : value.name,
+         weight : value.weight,
+         pid : value.pid,
+         nid : value.nid,
+         min : value.extra.min,
+         max : value.extra.max,
+         multiple : value.extra.multiple,
+         form_key : value.form_key,
+         cid : value.cid,
+         type : value.type,
+         values : []
+       });
+
+
+  });
+
+  for (var answerIndex = 0; answerIndex < $scope.answerandkey.length; answerIndex++){
+
+    var answerSetValue = $scope.answerandkey[answerIndex + 1];
+    if ($scope.answerandkey[answerIndex].length = 1){
+
+      for (var answerItemIndex = 0; answerItemIndex < answerSetValue.length; answerItemIndex++){
+        answerSetValue[2].push ($scope.appquestionnaire[1]);
+      }
+    }
+  }
+
+
+/**
+$scope.jsonquestionsclean = data;
+
+angular.forEach($scope.jsonquestionsclean.webform.components, function(value){
+    $scope.jsoncounter.push (1);
+});
+
+for (var jsonIndex = 0; jsonIndex < $scope.jsoncounter.length; jsonIndex++) {
+   delete $scope.jsonquestionsclean.webform.components[jsonIndex + 1].extra.items;
+};
+
+**/
+
+/** FIND A WAY TO WRITE TO OBJECT IN JSON
+for (var insertIndex = 0; insertIndex < $scope.answerandkey.length; insertIndex++) {
+  if ($scope.answerandkey[insertIndex].length = 1) {
+
+  }
+
+};
+**/
+
+console.log($scope.jsonquestionsclean);
+
+  })
     .error(function(data, status, headers, config){
       console.log('data error');
     })
@@ -77,6 +194,8 @@ angular.module('starter.controllers', [])
       things = result.data;
     });
 })
+
+
 
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {

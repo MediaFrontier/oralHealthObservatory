@@ -1,0 +1,482 @@
+{
+  "sid": "32",
+  "uuid": "43543670-f4ee-4ba0-8be2-b8429a688c17",
+  "uri": "http://fdi.mediafrontier.ch.php56-30.ord1-1.websitetestlink.com/v2/submission/43543670-f4ee-4ba0-8be2-b8429a688c17",
+  "webform": "http://fdi.mediafrontier.ch.php56-30.ord1-1.websitetestlink.com/v2/webform/ff548a09-089f-4289-8419-f76492f69e0a",
+  "user": "5abf258c-8e80-4257-bf53-698b08faf03d",
+  "submitted": "1472112938",
+  "data": {
+    "1": {
+      "form_key": "gender",
+      "cid": "1",
+      "type": "select",
+      "values": [
+        "male"
+      ]
+    },
+    "2": {
+      "form_key": "what_is_your_age",
+      "cid": "2",
+      "type": "number",
+      "values": null
+    },
+    "3": {
+      "form_key": "where_do_you_live",
+      "cid": "3",
+      "type": "select",
+      "values": [
+        "Urban area (more than 15,000 people)"
+      ]
+    },
+    "4": {
+      "form_key": "does_your_child_go_to_school",
+      "cid": "4",
+      "type": "select",
+      "values": null
+    },
+    "5": {
+      "form_key": "do_you_go_to_school",
+      "cid": "5",
+      "type": "select",
+      "values": null
+    },
+    "6": {
+      "form_key": "what_level_of_school_did_you_complete",
+      "cid": "6",
+      "type": "select",
+      "values": null
+    },
+    "7": {
+      "form_key": "what_was_your_main_form_of_employment_in_the_last_year",
+      "cid": "7",
+      "type": "select",
+      "values": null
+    },
+    "8": {
+      "form_key": "when_did_you_last_visit_the_dentist",
+      "cid": "8",
+      "type": "select",
+      "values": null
+    },
+    "9": {
+      "form_key": "when_did_your_child_last_visit_the_dentist",
+      "cid": "9",
+      "type": "select",
+      "values": null
+    },
+    "10": {
+      "form_key": "if_less_than_1_year_how_many_times",
+      "cid": "10",
+      "type": "number",
+      "values": null
+    },
+    "11": {
+      "form_key": "what_was_the_purpose_of_the_visit",
+      "cid": "11",
+      "type": "select",
+      "values": null
+    },
+    "12": {
+      "form_key": "does_your_child_consume_tobacco_products",
+      "cid": "12",
+      "type": "select",
+      "values": null
+    },
+    "13": {
+      "form_key": "do_you_consume_tobacco_products",
+      "cid": "13",
+      "type": "select",
+      "values": null
+    },
+    "14": {
+      "form_key": "if_yes_your_child",
+      "cid": "14",
+      "type": "select",
+      "values": null
+    },
+    "15": {
+      "form_key": "if_yes_you",
+      "cid": "15",
+      "type": "select",
+      "values": null
+    },
+    "16": {
+      "form_key": "how_often",
+      "cid": "16",
+      "type": "select",
+      "values": null
+    },
+    "17": {
+      "form_key": "how_often_does_your_child_eat_or_drink_anything_per_day",
+      "cid": "17",
+      "type": "fieldset",
+      "values": null
+    },
+    "18": {
+      "form_key": "eat_or_drink_input",
+      "cid": "18",
+      "type": "number",
+      "values": null
+    },
+    "19": {
+      "form_key": "how_often_do_you_eat_or_drink_anything_per_day_select",
+      "cid": "19",
+      "type": "select",
+      "values": null
+    },
+    "20": {
+      "form_key": "how_often_do_you_eat_or_drink_anything_per_day",
+      "cid": "20",
+      "type": "fieldset",
+      "values": null
+    },
+    "21": {
+      "form_key": "child_eat_or_drink_input",
+      "cid": "21",
+      "type": "number",
+      "values": null
+    },
+    "22": {
+      "form_key": "how_often_does_your_child_eat_or_drink_anything_per_day_select",
+      "cid": "22",
+      "type": "select",
+      "values": null
+    },
+    "23": {
+      "form_key": "is_your_child_still_breast_bottle_feeding",
+      "cid": "23",
+      "type": "select",
+      "values": null
+    },
+    "24": {
+      "form_key": "how_often_does_your_child_brush_his_her_teeth",
+      "cid": "24",
+      "type": "select",
+      "values": null
+    },
+    "25": {
+      "form_key": "how_often_do_you_child_brush_your_teeth",
+      "cid": "25",
+      "type": "select",
+      "values": null
+    },
+    "26": {
+      "form_key": "when_tick_all_that_are_appropriate",
+      "cid": "26",
+      "type": "select",
+      "values": null
+    },
+    "27": {
+      "form_key": "does_your_child_use_a_toothpaste_containing_fluoride",
+      "cid": "27",
+      "type": "select",
+      "values": null
+    },
+    "28": {
+      "form_key": "do_you_use_a_toothpaste_containing_fluoride",
+      "cid": "28",
+      "type": "select",
+      "values": null
+    },
+    "29": {
+      "form_key": "does_your_child_chew_gum_on_a_regular_basis",
+      "cid": "29",
+      "type": "select",
+      "values": null
+    },
+    "30": {
+      "form_key": "do_you_chew_gum_on_a_regular_basis",
+      "cid": "30",
+      "type": "select",
+      "values": null
+    },
+    "31": {
+      "form_key": "when_pick_all_that_apply",
+      "cid": "31",
+      "type": "select",
+      "values": null
+    },
+    "32": {
+      "form_key": "what_is_the_main_reason_why_you_chew_sugar_free_gum",
+      "cid": "32",
+      "type": "select",
+      "values": null
+    },
+    "33": {
+      "form_key": "in_the_last_year_how_often_has_your_child_experienced_difficulties_with_eating_due_to_mouth_or_teeth_problems",
+      "cid": "33",
+      "type": "select",
+      "values": null
+    },
+    "34": {
+      "form_key": "in_the_last_year_how_often_have_you_experienced_difficulties_with_eating_due_to_mouth_or_teeth_problems",
+      "cid": "34",
+      "type": "select",
+      "values": null
+    },
+    "35": {
+      "form_key": "in_the_last_year_how_often_has_your_child_experienced_a_toothache_painful_gums_or_sore_spots",
+      "cid": "35",
+      "type": "select",
+      "values": null
+    },
+    "36": {
+      "form_key": "in_the_last_year_how_often_have_you_experienced_a_toothache_painful_gums_or_sore_spots",
+      "cid": "36",
+      "type": "select",
+      "values": null
+    },
+    "37": {
+      "form_key": "In_the_last_year_how_often_has_your_child_felt_embarrassed_because_of_the_appearance_of_his_her_teeth",
+      "cid": "37",
+      "type": "select",
+      "values": null
+    },
+    "38": {
+      "form_key": "In_the_last_year_how_often_have_you_felt_embarrassed_because_of_the_appearance_of_your_teeth",
+      "cid": "38",
+      "type": "select",
+      "values": null
+    },
+    "39": {
+      "form_key": "in_the_last_year_how_often_has_your_child_avoided_smiling_and_or_laughing_because_appearance_his_her_teeth",
+      "cid": "39",
+      "type": "select",
+      "values": null
+    },
+    "40": {
+      "form_key": "in_the_last_year_how_often_have_you_avoided_smiling_and_or_laughing_because_appearance_your_teeth_dentures",
+      "cid": "40",
+      "type": "select",
+      "values": null
+    },
+    "41": {
+      "form_key": "how_many_days_in_the_last_year_has_your_child_stayed_home_sick_from_school_due_to_teeth_or_mouth_issues",
+      "cid": "41",
+      "type": "number",
+      "values": null
+    },
+    "42": {
+      "form_key": "How_many_days_in_the_last_year_have_you_stayed_home_sick_from_work_due_to_teeth_or_mouth_issues",
+      "cid": "42",
+      "type": "number",
+      "values": null
+    },
+    "43": {
+      "form_key": "how_many_times_in_the_last_year_has_your_child_reduced_participation_social_activities_due_to_teeth_mouth_issues",
+      "cid": "43",
+      "type": "number",
+      "values": null
+    },
+    "44": {
+      "form_key": "how_many_times_in_the_last_year_have_your_reduced_participation_social_activities_due_to_teeth_mouth_issue",
+      "cid": "44",
+      "type": "number",
+      "values": null
+    },
+    "45": {
+      "form_key": "which_of_the_followings_do_you_think_are_harmful_for_oral_health_tick_all_that_apply",
+      "cid": "45",
+      "type": "select",
+      "values": null
+    },
+    "46": {
+      "form_key": "questions_for_dentist",
+      "cid": "46",
+      "type": "fieldset",
+      "values": null
+    },
+    "47": {
+      "form_key": "does_the_patient_visit_your_practice_on_a_regular_basis_at_least_once_per_year",
+      "cid": "47",
+      "type": "select",
+      "values": null
+    },
+    "48": {
+      "form_key": "what_is_the_purpose_of_this_visit",
+      "cid": "48",
+      "type": "select",
+      "values": null
+    },
+    "49": {
+      "form_key": "how_many_teeth_does_the_patient_have_present_in_his_her_mouth",
+      "cid": "49",
+      "type": "number",
+      "values": null
+    },
+    "50": {
+      "form_key": "how_many_cavitated_caries_does_the_patient_have",
+      "cid": "50",
+      "type": "number",
+      "values": null
+    },
+    "51": {
+      "form_key": "how_many_restorations_does_the_patient_have",
+      "cid": "51",
+      "type": "number",
+      "values": null
+    },
+    "52": {
+      "form_key": "how_many_missing_different_from_unerupted_teeth_does_the_patient_have",
+      "cid": "52",
+      "type": "number",
+      "values": null
+    },
+    "53": {
+      "form_key": "does_the_patient_have_any_sealants_present",
+      "cid": "53",
+      "type": "select",
+      "values": null
+    },
+    "54": {
+      "form_key": "does_the_patient_have_gingivitis",
+      "cid": "54",
+      "type": "select",
+      "values": null
+    },
+    "55": {
+      "form_key": "does_the_patient_have_alveolar_bone_loss_periodontitis",
+      "cid": "55",
+      "type": "select",
+      "values": null
+    },
+    "56": {
+      "form_key": "does_the_patient_consume_tobacco_in_any_way",
+      "cid": "56",
+      "type": "select",
+      "values": null
+    },
+    "57": {
+      "form_key": "has_the_patient_received_periodontal_treatment",
+      "cid": "57",
+      "type": "select",
+      "values": null
+    },
+    "58": {
+      "form_key": "has_the_patient_received_orthodontic_treatment",
+      "cid": "58",
+      "type": "select",
+      "values": null
+    },
+    "59": {
+      "form_key": "does_the_patient_have_any_dental_implants",
+      "cid": "59",
+      "type": "number",
+      "values": null
+    },
+    "60": {
+      "form_key": "demographics",
+      "cid": "60",
+      "type": "fieldset",
+      "values": null
+    },
+    "61": {
+      "form_key": "lifestyle_questions",
+      "cid": "61",
+      "type": "fieldset",
+      "values": null
+    },
+    "62": {
+      "form_key": "what_was_the_main_reason_for_your_child_not_visiting_the_dentist",
+      "cid": "62",
+      "type": "select",
+      "values": null
+    },
+    "63": {
+      "form_key": "what_was_the_main_reason_for_not_visiting_the_dentist",
+      "cid": "63",
+      "type": "select",
+      "values": null
+    },
+    "64": {
+      "form_key": "how_long_does_it_take_to_travel_to_the_dental_office",
+      "cid": "64",
+      "type": "select",
+      "values": null
+    },
+    "65": {
+      "form_key": "if_your_child_needs_dental_care_he_she_usually_gets_an_appointment_within",
+      "cid": "65",
+      "type": "select",
+      "values": null
+    },
+    "66": {
+      "form_key": "if_you_need_dental_care_you_usually_gets_an_appointment_within",
+      "cid": "66",
+      "type": "select",
+      "values": null
+    },
+    "67": {
+      "form_key": "will_your_child_visit_the_dentist_in_the_next_3_months",
+      "cid": "67",
+      "type": "select",
+      "values": null
+    },
+    "68": {
+      "form_key": "will_you_visit_the_dentist_in_the_next_3_months",
+      "cid": "68",
+      "type": "select",
+      "values": null
+    },
+    "69": {
+      "form_key": "what_is_the_purpose_of_the_visit",
+      "cid": "69",
+      "type": "select",
+      "values": null
+    },
+    "70": {
+      "form_key": "dentist_visits",
+      "cid": "70",
+      "type": "fieldset",
+      "values": null
+    },
+    "71": {
+      "form_key": "lifestyle_habits",
+      "cid": "71",
+      "type": "fieldset",
+      "values": null
+    },
+    "72": {
+      "form_key": "quality_of_life",
+      "cid": "72",
+      "type": "fieldset",
+      "values": null
+    },
+    "73": {
+      "form_key": "does_your_child_use_any_of_the_following_fluoride_products_a",
+      "cid": "73",
+      "type": "select",
+      "values": null
+    },
+    "74": {
+      "form_key": "does_your_child_use_any_of_the_following_fluoride_products",
+      "cid": "74",
+      "type": "fieldset",
+      "values": null
+    },
+    "75": {
+      "form_key": "does_your_child_use_any_of_the_following_fluoride_products_dont_know",
+      "cid": "75",
+      "type": "select",
+      "values": null
+    },
+    "76": {
+      "form_key": "do_you_use_any_of_the_following_fluoride_products",
+      "cid": "76",
+      "type": "fieldset",
+      "values": null
+    },
+    "77": {
+      "form_key": "do_you_use_any_of_the_following_fluoride_products_a",
+      "cid": "77",
+      "type": "select",
+      "values": null
+    },
+    "78": {
+      "form_key": "do_you_use_any_of_the_following_fluoride_products_dont_know",
+      "cid": "78",
+      "type": "select",
+      "values": null
+    }
+  }
+}
