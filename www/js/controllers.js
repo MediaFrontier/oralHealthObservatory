@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngStorage'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
@@ -41,21 +41,9 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Questions', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
 
 //import questions from JSON service
-.controller('QuestionsCtrl', function($scope, $http) {
-   // this line won't work. See comment
+.controller('QuestionsCtrl', function($scope, $http, $localStorage, $sessionStorage) {
 
   $http.get('http://fdi.mediafrontier.ch.php56-30.ord1-1.websitetestlink.com/v2/node/ff548a09-089f-4289-8419-f76492f69e0a')
     .success(function(data, status, headers, config){
@@ -64,12 +52,8 @@ angular.module('starter.controllers', [])
       $scope.result = data.webform.components; // for UI, outputs only the COMPONENTS object from JSON
       $scope.allanswers = [];
       $scope.answerandkey = [];
-      $scope.jsoncounter = [];
       $scope.appquestionnaire = [];
-      console.log($scope.allanswers);
-      console.log($scope.answerandkey);
-      console.log($scope.jsoncounter);
-      console.log($scope.appquestionnaire);
+      console.log($scope.appquestionnaire); //Parsed JSON for use in template
       // for each question, split the "items" string into separate values
 
     angular.forEach($scope.result, function(value){
@@ -78,13 +62,9 @@ angular.module('starter.controllers', [])
         }
         else { $scope.allanswers.push ("N");
         }
-
-
    });
 
-
-
-
+   //Split the answers a second time by "|" and creates array of cid followed by answers and keys in index order
    for (var itemIndex = 0; itemIndex < $scope.allanswers.length; itemIndex++) {
          var itemSetValues = $scope.allanswers[itemIndex];
 
@@ -95,23 +75,10 @@ angular.module('starter.controllers', [])
             else {
               $scope.answerandkey.push (itemIndex, "N")
             }
-
-           //Creates array of answers with question number, question order/rank and answer with key and value in an array
          }
    };
 
-   /** MAYBE DO NOT NEED?
-   for (var answerIndex = 0; answerIndex < $scope.answerandkey.length; answerIndex++){
-
-     var answerSetValue = $scope.answerandkey[answerIndex + 1];
-     if ($scope.answerandkey[answerIndex].length = 1){
-
-       for (var answerItemIndex = 0; answerItemIndex < answerSetValue.length; answerItemIndex++){
-         answerSetValue[2].push ($scope.appquestionnaire[1]);
-       }
-     }
-   }**/
-
+   //Creates array of answers with question number, question order/rank and answer with key and value in an array
    var cid = 'cid'; //Component id, unique identifier for each questionnaire component
    var weight = 'weight'; //The order in which each component should appear in
    var form_key = 'form_key'; //machine-readable name for question
@@ -124,18 +91,17 @@ angular.module('starter.controllers', [])
    var max = 'max'; //If the question type is a number, maximum value allowed for user input
    var multiple = 'multiple'; //Whether or not multiple selections are allowed
 
-   var answerIndex = 0;
+  // var answerIndex = 0; //
 
-   //pull answers and slice into "values"
-   var outputs = [];
-   var loopcid = 0;
-   var outputsposition = 0;
+   //pull answers and slice into "values" array
+   var outputs = []; //empty array to hold answers
+   var loopcid = 0; //variable that matches the position of the loop to the values of which the cid's need to be pulled out
+   var outputsposition = 0; //position of the start value which corresponds to the cid in the array
 
    angular.forEach($scope.result, function(value){
 
-      /**loop through array by CID , splice process  **/
-
-      var outputslength = outputs.length
+      //loop through array by CID , splice process
+      var outputslength = outputs.length //the current length of the output
 
       for (itemIndex = 0; itemIndex < $scope.answerandkey.length; itemIndex++) {
 
@@ -147,7 +113,7 @@ angular.module('starter.controllers', [])
 
   }
 
-      loopcid++;
+  loopcid++;
 
       //end splice/loop
 
@@ -162,54 +128,75 @@ angular.module('starter.controllers', [])
          form_key : value.form_key,
          cid : value.cid,
          type : value.type,
-         values : outputs.slice(outputslength, outputsposition)
+         values : outputs.slice(outputslength, outputsposition) //the slice of values (answers) for each question
        });
-
-//var outputsdeletelength = outputs.length
-//console.log(outputsdeletelength);
-
-//outputs.splice(0,outputsdeletelength);
-
   });
 
+  var questionnaireObject = $scope.appquestionnaire;
 
+  // Put the object into storage
+  localStorage.setItem('questionnaireObject', JSON.stringify(questionnaireObject));
 
-
-/**
-$scope.jsonquestionsclean = data;
-
-angular.forEach($scope.jsonquestionsclean.webform.components, function(value){
-    $scope.jsoncounter.push (1);
-});
-
-for (var jsonIndex = 0; jsonIndex < $scope.jsoncounter.length; jsonIndex++) {
-   delete $scope.jsonquestionsclean.webform.components[jsonIndex + 1].extra.items;
-};
-
-**/
-
-/** FIND A WAY TO WRITE TO OBJECT IN JSON
-for (var insertIndex = 0; insertIndex < $scope.answerandkey.length; insertIndex++) {
-  if ($scope.answerandkey[insertIndex].length = 1) {
-
-  }
-
-};
-**/
-
-//console.log($scope.jsonquestionsclean);
 
   })
     .error(function(data, status, headers, config){
-      console.log('data error');
+      console.log('connection failed, use local copy');
+
+      // Retrieve the object from storage
+      var retrievedObject = localStorage.getItem('questionnaireObject');
+      console.log('retrievedObject: ', JSON.parse(retrievedObject));
     })
     .then(function(result){
       things = result.data;
     });
+
+})
+
+.controller('LocalDataCtrl', function($scope, $http, $localStorage, $sessionStorage) {
+// logs locally stored data
+var retrievedObject = localStorage.getItem('questionnaireObject');
+console.log('retrievedObject: ', JSON.parse(retrievedObject));
+$scope.retrievedlocalquestionnaire = JSON.parse(retrievedObject);
 })
 
 
+.controller('QuestionTemplateCtrl', function($scope, $http, $localStorage, $sessionStorage) {
+// logs locally stored data
+var retrievedObject = localStorage.getItem('questionnaireObject');
+$scope.retrievedlocalquestionnaire = JSON.parse(retrievedObject);
+console.log($scope.retrievedlocalquestionnaire);
 
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+var questionnaire = [] //empty array to hold HTML markup
+
+
+var localquestionnaire = $scope.retrievedlocalquestionnaire;
+
+//sorts questions by weight as defined by admin in drupal
+localquestionnaire.sort(function(a, b) {
+    return parseFloat(a.weight) - parseFloat(b.weight);
+});
+console.log(localquestionnaire);
+
+
+//loops through components and prints html markup
+/**for (questionIndex = 0; questionIndex < $scope.retrievedlocalquestionnaire.length; questionIndex++){
+  if (localquestionnaire[index].type == 'select'){
+    var name = '<h1>'+localquestionnaire[index].name+'</h1>';
+    var values = '<ion-checkbox>'+localquestionnaire[index].values+'</ion-checkbox>';
+    var cid = localquestionnaire[index].cid;
+      questionnaire.push(
+
+
+       );
+
+    for (questionViewValuesIndex = 0; questionViewValuesIndex < values.length; questionViewValuesIndex++){
+
+    }
+
+
+  }
+}**/
+
+
 });

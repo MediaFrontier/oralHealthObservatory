@@ -20,9 +20,22 @@
 
 
 
+<ion-list><ion-list-item ng-repeat="question in retrievedlocalquestionnaire">
+  <h1>Question {{question.cid}}</h1>
+  <h3>{{question.name}}</h3>
+  <h4>{{question.type}}</h4>
+  <ion-checkbox ng-repeat="value in retrievedlocalquestionnaire[$index].values">
+    {{value}}
+  </ion-checkbox>
+<!--  <div class="item">
+is it checked? {{allanswers[$index]}}
+</div>-->
+</ion-list-item>
+</ion-list>
 
 
 
+<!--
 
             <ion-list><ion-list-item ng-repeat="question in result">
               <h1>Question {{question.cid}}</h1>
@@ -36,6 +49,6 @@
          </div>
        </ion-list-item>
      </ion-list>
-
+-->
   </ion-content>
 </ion-view>
