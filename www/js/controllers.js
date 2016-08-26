@@ -100,6 +100,17 @@ angular.module('starter.controllers', [])
          }
    };
 
+   /** MAYBE DO NOT NEED?
+   for (var answerIndex = 0; answerIndex < $scope.answerandkey.length; answerIndex++){
+
+     var answerSetValue = $scope.answerandkey[answerIndex + 1];
+     if ($scope.answerandkey[answerIndex].length = 1){
+
+       for (var answerItemIndex = 0; answerItemIndex < answerSetValue.length; answerItemIndex++){
+         answerSetValue[2].push ($scope.appquestionnaire[1]);
+       }
+     }
+   }**/
 
    var cid = 'cid'; //Component id, unique identifier for each questionnaire component
    var weight = 'weight'; //The order in which each component should appear in
@@ -115,23 +126,30 @@ angular.module('starter.controllers', [])
 
    var answerIndex = 0;
 
+   //pull answers and slice into "values"
+   var outputs = [];
+   var loopcid = 0;
+   var outputsposition = 0;
+
    angular.forEach($scope.result, function(value){
 
-      /** loop through array by CID , needs splice process
+      /**loop through array by CID , splice process  **/
 
-      var array = [0,["male", "Male"],0,["female","Female"],1,["y","Y"],1,["n","N"]];
+      var outputslength = outputs.length
 
-      var outputs = [];
+      for (itemIndex = 0; itemIndex < $scope.answerandkey.length; itemIndex++) {
 
-      var loopcid = 1;
 
-      for (itemIndex = 0; itemIndex < array.length; itemIndex++) {
-
-      if (array[itemIndex] == loopcid){
-      outputs.push(array[itemIndex+1][1]);
+      if ($scope.answerandkey[itemIndex] == loopcid){
+      outputs.push($scope.answerandkey[itemIndex+1][1]);
+      outputsposition++;
       }
 
-      **/
+  }
+
+      loopcid++;
+
+      //end splice/loop
 
        $scope.appquestionnaire.push ({
          name : value.name,
@@ -144,22 +162,17 @@ angular.module('starter.controllers', [])
          form_key : value.form_key,
          cid : value.cid,
          type : value.type,
-         values : []
+         values : outputs.slice(outputslength, outputsposition)
        });
 
+//var outputsdeletelength = outputs.length
+//console.log(outputsdeletelength);
+
+//outputs.splice(0,outputsdeletelength);
 
   });
 
-  for (var answerIndex = 0; answerIndex < $scope.answerandkey.length; answerIndex++){
 
-    var answerSetValue = $scope.answerandkey[answerIndex + 1];
-    if ($scope.answerandkey[answerIndex].length = 1){
-
-      for (var answerItemIndex = 0; answerItemIndex < answerSetValue.length; answerItemIndex++){
-        answerSetValue[2].push ($scope.appquestionnaire[1]);
-      }
-    }
-  }
 
 
 /**
@@ -184,7 +197,7 @@ for (var insertIndex = 0; insertIndex < $scope.answerandkey.length; insertIndex+
 };
 **/
 
-console.log($scope.jsonquestionsclean);
+//console.log($scope.jsonquestionsclean);
 
   })
     .error(function(data, status, headers, config){
