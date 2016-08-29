@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['ngStorage'])
+angular.module('starter.controllers', ['ngSanitize'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $sce) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -152,7 +152,7 @@ angular.module('starter.controllers', ['ngStorage'])
 
 })
 
-.controller('LocalDataCtrl', function($scope, $http, $localStorage, $sessionStorage) {
+.controller('LocalDataCtrl', function($scope, $localStorage, $sessionStorage) {
 // logs locally stored data
 var retrievedObject = localStorage.getItem('questionnaireObject');
 console.log('retrievedObject: ', JSON.parse(retrievedObject));
@@ -160,14 +160,15 @@ $scope.retrievedlocalquestionnaire = JSON.parse(retrievedObject);
 })
 
 
-.controller('QuestionTemplateCtrl', function($scope, $http, $localStorage, $sessionStorage) {
+.controller('QuestionTemplateCtrl',[ '$scope', '$sce', function($scope, $localStorage, $sessionStorage, $sce) {
+
 // logs locally stored data
 var retrievedObject = localStorage.getItem('questionnaireObject');
 $scope.retrievedlocalquestionnaire = JSON.parse(retrievedObject);
 console.log($scope.retrievedlocalquestionnaire);
 
 
-var questionnaire = [] //empty array to hold HTML markup
+var questionnaire = []; //empty array to hold HTML markup
 
 
 var localquestionnaire = $scope.retrievedlocalquestionnaire;
@@ -176,27 +177,50 @@ var localquestionnaire = $scope.retrievedlocalquestionnaire;
 localquestionnaire.sort(function(a, b) {
     return parseFloat(a.weight) - parseFloat(b.weight);
 });
-console.log(localquestionnaire);
-
-
+$scope.localquestionnaire = localquestionnaire;
 //loops through components and prints html markup
-/**for (questionIndex = 0; questionIndex < $scope.retrievedlocalquestionnaire.length; questionIndex++){
-  if (localquestionnaire[index].type == 'select'){
-    var name = '<h1>'+localquestionnaire[index].name+'</h1>';
-    var values = '<ion-checkbox>'+localquestionnaire[index].values+'</ion-checkbox>';
-    var cid = localquestionnaire[index].cid;
-      questionnaire.push(
 
+/**
+for (questionIndex = 0; questionIndex < $scope.retrievedlocalquestionnaire.length; questionIndex++){
+  if (localquestionnaire[questionIndex].type == 'select'){
+    var name = '<h1>'+localquestionnaire[questionIndex].name+'</h1>';
+    var cid = '<h2>'+localquestionnaire[questionIndex].cid+'</h2>';
 
-       );
+    questionnaire.push('<ion-list-item>',name, cid);
+
+    var values = localquestionnaire[questionIndex].values;
 
     for (questionViewValuesIndex = 0; questionViewValuesIndex < values.length; questionViewValuesIndex++){
 
+      var inputsHTML = '<input type="checkbox" ng-model="localquestionnaire['+questionIndex+'].values"'+
+      'ng-true-value="'+values[questionViewValuesIndex]+'"'+'>';
+
+      questionnaire.push(inputsHTML,values[questionViewValuesIndex],'</input>');
     }
+
+    questionnaire.push('</ion-list-item>');
 
 
   }
-}**/
+}
+  $scope.questionnaire = questionnaire.join('');
+  localStorage.setItem('questionnaireHTMLObject', JSON.stringify($scope.questionnaire));
+**/
 
 
-});
+console.log(angular.version);
+
+
+}]);
+
+/**
+.controller('ExampleController', ['$scope', '$sce', function($scope, $sce) {
+  var retrievedHTMLObject = localStorage.getItem('questionnaireHTMLObject');
+  $scope.retrievedlocalHTMLquestionnaire = JSON.parse(retrievedHTMLObject);
+
+  $scope.snippet = $scope.retrievedlocalHTMLquestionnaire ;
+  $scope.deliberatelyTrustDangerousSnippet = function() {
+    return $sce.trustAsHtml($scope.snippet);
+  };
+}])
+**/

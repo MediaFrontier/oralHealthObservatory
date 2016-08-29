@@ -3,52 +3,33 @@
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
-
-<!--
-<ion-list>
-  <ion-list-item ng-repeat="question in result">
-    <h1>Question {{question.name}}</h1>
-    <ion-checkbox ng-repeat="answer in answerandkey">
-      {{answerandkey[2][1]}}
-    </ion-checkbox>
-    <ion-checkbox>
-      {{answerandkey[5][1]}}
-    </ion-checkbox>
-  </ion-list-item>
-  <ion-list>
--->
-
-
-
-<ion-list><ion-list-item ng-repeat="question in retrievedlocalquestionnaire">
-  <h1>Question {{question.cid}}</h1>
-  <h3>{{question.name}}</h3>
-  <h4>{{question.type}}</h4>
-  <ion-checkbox ng-repeat="value in retrievedlocalquestionnaire[$index].values">
-    {{value}}
-  </ion-checkbox>
-<!--  <div class="item">
-is it checked? {{allanswers[$index]}}
-</div>-->
-</ion-list-item>
-</ion-list>
-
-
-
-<!--
-
-            <ion-list><ion-list-item ng-repeat="question in result">
-              <h1>Question {{question.cid}}</h1>
-              <h3 ng-bind-html="question.name">{{question.name}}</h3>
-              <h4>{{question.type}}</h4>
-              <ion-checkbox ng-repeat="item in question.extra.items.split('\r\n')" ng-model="question.clicked">
-                {{allanswers.items.split('|')[1]}}
-              </ion-checkbox>
-              <div class="item">
-           is it checked? {{allanswers[$index]}}
-         </div>
-       </ion-list-item>
-     </ion-list>
--->
+    <ion-list>
+      <ion-list-item ng-repeat="item in localquestionnaire track by $index">
+        <h1>{{item.name}}</h1>
+        <ion-checkbox ng-repeat="values in item.values" ng-show = "item.type == 'select'">
+          {{values}}
+        </ion-checkbox>
+      </ion-list-item>
+    </ion-list>
   </ion-content>
+
+
+
+
+
+<!--  <ion-content ng-controller="ExampleController" class="has-header">
+
+<ion-list>
+             <ion-list-item ng-bind-html="deliberatelyTrustDangerousSnippet()"></ion-list-item>
+<ion-list-item>
+  <form name="myForm" ng-controller="QuestionTemplateCtrl">
+      <input type="checkbox" ng-model="localquestionnaire[1].cid" ng-true-value="2">Male</input>
+</form>
+</ion-list-item>
+<p>
+value1 = {{localquestionnaire[1].cid}}
+</p>
+</ion-list>
+  </ion-content>
+-->
 </ion-view>
